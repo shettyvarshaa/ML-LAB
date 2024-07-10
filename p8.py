@@ -11,10 +11,9 @@ df['species'] = iris.target
 species_mapping = dict(zip(range(3), iris.target_names))
 df['species'] = df['species'].map(species_mapping)
 df.to_csv('iris_dataset.csv', index=False)
-
-url = "iris.csv"
+
 column_names = ['sepal_length', 'sepal_width', 'petal_length', 'petal_width', 'class']
-df = pd.read_csv(url, header=None, names=column_names)
+df = pd.read_csv("./iris.csv", header=None, names=column_names)
 X = df.drop('class', axis=1)
 y = df['class']
 
