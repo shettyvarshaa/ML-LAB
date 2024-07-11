@@ -12,3 +12,13 @@ print(f"Accuracy: {accuracy_score(y_test, y_pred):.2f}")
 print("Classification Report:")
 print(classification_report(y_test, y_pred, target_names=iris.target_names))
 print("\nConfusion Matrix:\n", confusion_matrix(y_test, y_pred))
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+conf_matrix = confusion_matrix(y_test, y_pred)
+plt.figure(figsize=(8, 6))
+sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues', xticklabels=iris.target_names, yticklabels=iris.target_names)
+plt.ylabel('Actual')
+plt.xlabel('Predicted')
+plt.title('Confusion Matrix')
+plt.show()
