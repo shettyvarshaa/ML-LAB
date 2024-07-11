@@ -11,7 +11,7 @@ df['species'] = iris.target
 species_mapping = dict(zip(range(3), iris.target_names))
 df['species'] = df['species'].map(species_mapping)
 df.to_csv('iris_dataset.csv', index=False)
-
+
 column_names = ['sepal_length', 'sepal_width', 'petal_length', 'petal_width', 'class']
 df = pd.read_csv("./iris.csv", header=None, names=column_names)
 X = df.drop('class', axis=1)
