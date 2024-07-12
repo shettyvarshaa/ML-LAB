@@ -6,11 +6,14 @@ from sklearn.metrics import accuracy_score, classification_report
 
 # Load the Iris dataset
 iris = load_iris()
-df = pd.DataFrame(data=iris.data, columns=iris.feature_names)
-df['species'] = iris.target
-species_mapping = dict(zip(range(3), iris.target_names))
-df['species'] = df['species'].map(species_mapping)
-df.to_csv('iris_dataset.csv', index=False)
+
+## IF CSV file isn't given, then do this :
+# iris = load_iris()
+# df = pd.DataFrame(data=iris.data, columns=iris.feature_names)
+# df['species'] = iris.target
+# species_mapping = dict(zip(range(3), iris.target_names))
+# df['species'] = df['species'].map(species_mapping)
+# df.to_csv('iris_dataset.csv', index=False)
 
 column_names = ['sepal_length', 'sepal_width', 'petal_length', 'petal_width', 'class']
 df = pd.read_csv("./iris.csv", header=None, names=column_names)
@@ -24,7 +27,7 @@ print(f"Accuracy:{accuracy_score(y_test, y_pred)}\n")
 print(f"Classification Report:\n{classification_report(y_test, y_pred)}")
 
 
-
+## WITHOUT CSV FILE
 # from sklearn.datasets import load_breast_cancer
 # from sklearn.model_selection import train_test_split
 # from sklearn.metrics import accuracy_score,classification_report
