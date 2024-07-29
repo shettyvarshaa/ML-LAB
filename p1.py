@@ -1,8 +1,8 @@
 import csv
 with open('enjoysport.csv', 'r') as csvfile:
     data = list(csv.reader(csvfile))
-print(data)
 
+print(data)
 print("\nThe total number of training instances are:", len(data))
 
 num_attributes = len(data[0]) - 1
@@ -17,5 +17,4 @@ for i, instance in enumerate(data):
             else:
                 hypothesis[j] = '?'
     print(f"\nThe hypothesis after training instance {i + 1} is:", hypothesis)
-
 print("\n\nThe Maximally specific hypothesis is:", hypothesis)
