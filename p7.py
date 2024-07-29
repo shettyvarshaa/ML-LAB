@@ -20,8 +20,7 @@ test = [
     "I love this film",
     "I hated the movie",
     "It was an awesome movie",
-    "This movie was not good",
-    "This movie was terrible and amazing"
+    "This movie was not good"
 ]
 
 X_test = vect.transform(test)
@@ -29,7 +28,8 @@ y_pred = clf.predict(X_test)
 print("Predicted labels:", y_pred)
 
 
-true_labels = ["positive", "negative", "positive", "negative", "negative"]
+# Actual labels for the test data
+true_labels = ["positive", "negative", "positive", "negative"]
 print("Classification Report:")
 print(classification_report(true_labels, y_pred))
 print("Accuracy Score:", accuracy_score(true_labels, y_pred))
