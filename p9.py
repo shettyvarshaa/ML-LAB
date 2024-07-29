@@ -24,4 +24,3 @@ evidence = { 'age': 50, 'sex': 1, 'cp': 2, 'thalach': 163, 'exang': 0, 'oldpeak'
 
 result = inference.query(variables=['target'], evidence=evidence)
 print(result)
-
