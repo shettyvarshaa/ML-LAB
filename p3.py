@@ -6,7 +6,6 @@ from sklearn.impute import SimpleImputer
 data = pd.read_csv('housing.csv')
 data.dropna(inplace=True)
 data.drop_duplicates(inplace=True)
-
 imputer = SimpleImputer(strategy='mean')
 data['longitude'] = imputer.fit_transform(data[['longitude']])
 
@@ -17,6 +16,6 @@ numerical_cols = ['longitude', 'latitude', 'housing_median_age', 'total_rooms', 
 scaler = StandardScaler()
 data_transformed[numerical_cols] = scaler.fit_transform(data_transformed[numerical_cols])
 
+print(data_transformed)
 # Save the processed data to a new CSV file
 # data_transformed.to_csv('processed_data.csv', index=False)
-print(data_transformed)
