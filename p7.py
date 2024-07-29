@@ -1,13 +1,35 @@
-from sklearn.datasets import fetch_20newsgroups_vectorized
-from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
-from sklearn.metrics import accuracy_score, classification_report
+from sklearn.metrics import classification_report, accuracy_score
 
-newsgroups = fetch_20newsgroups_vectorized()
+data = [
+    ("I love this movie", "positive"),
+    ("This film was amazing", "positive"),
+    ("I actually enjoyed it", "positive"),
+    ("I hated that movie", "negative"),
+    ("This film was terrible", "negative"),
+    ("I did not like it", "negative")
+]
 
-X_train, X_test, y_train, y_test = train_test_split(newsgroups.data, newsgroups.target, test_size=0.2, random_state=42)
-nb_classifier = MultinomialNB().fit(X_train, y_train)
-y_pred = nb_classifier.predict(X_test)
+text, label = zip(*data)
+vect = CountVectorizer()
+X = vect.fit_transform(text)
+clf = MultinomialNB().fit(X, label)
 
-print(f"Accuracy: {accuracy_score(y_test, y_pred)}\n")
-print(f"Classification Report:\n{classification_report(y_test, y_pred, target_names=newsgroups.target_names)}")
+test = [
+    "I love this film",
+    "I hated the movie",
+    "It was an awesome movie",
+    "This movie was not good",
+    "This movie was terrible and amazing"
+]
+
+X_test = vect.transform(test)
+y_pred = clf.predict(X_test)
+print("Predicted labels:", y_pred)
+
+
+true_labels = ["positive", "negative", "positive", "negative", "negative"]
+print("Classification Report:")
+print(classification_report(true_labels, y_pred))
+print("Accuracy Score:", accuracy_score(true_labels, y_pred))
