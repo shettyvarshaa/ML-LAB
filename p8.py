@@ -4,9 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import accuracy_score, classification_report
 
-# Load the Iris dataset
 iris = load_iris()
-
 column_names = ['sepal_length', 'sepal_width', 'petal_length', 'petal_width', 'class']
 df = pd.read_csv("./iris.csv", header=None, names=column_names)
 X = df.drop('class', axis=1)
