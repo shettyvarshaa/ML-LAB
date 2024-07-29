@@ -16,8 +16,6 @@ model = BayesianNetwork([
     ('oldpeak', 'target')
 ])
 
-# 
-
 model.fit(subset_data, estimator=MaximumLikelihoodEstimator)
 inference = VariableElimination(model)
 evidence = { 'age': 50, 'sex': 1, 'cp': 2, 'thalach': 163, 'exang': 0, 'oldpeak': 0 }
