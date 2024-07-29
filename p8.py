@@ -15,5 +15,8 @@ y_pred = model.predict(X_test)
 print(f"Accuracy: {accuracy_score(y_test, y_pred)}\n")
 print(f"Classification Report:\n{classification_report(y_test, y_pred)}")
 
-# Optional: Save the DataFrame to a CSV file (if needed for future use)
-# df.to_csv('iris.csv', index=False)
+# Optional: if dataset isn't given 
+# iris = load_iris()
+# X, y = iris.data, iris.target
+# df = pd.DataFrame(X, columns=iris.feature_names)
+# X_train, X_test, y_train, y_test = train_test_split(df, y, test_size=0.2, random_state=42)
